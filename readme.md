@@ -26,6 +26,24 @@ import {cursorUp, cursorLeft} from 'ansi-escapes';
 // etc, as above...
 ```
 
+**Progress reporting for Windows Terminal and ConEmu:**
+
+```js
+import {progressState} from 'ansi-escapes';
+
+// Show indeterminate progress
+process.stdout.write(progressState(1));
+
+// Show 50% progress
+process.stdout.write(progressState(2, 50));
+
+// Show error state
+process.stdout.write(progressState(3));
+
+// Clear progress when done
+process.stdout.write(progressState(0));
+```
+
 **You can also use it in the browser with Xterm.js:**
 
 ```js
@@ -222,6 +240,34 @@ Type: `string`\
 Default: `process.cwd()`
 
 [Inform ConEmu](https://conemu.github.io/en/AnsiEscapeCodes.html#ConEmu_specific_OSC) about shell current working directory.
+
+### ConEmu.progressState(state, percentage?)
+
+Set progress state for Windows Terminal and ConEmu taskbar progress reporting.
+
+#### state
+
+Type: `number`
+
+Progress state:
+- `0`: No progress
+- `1`: Indeterminate (shows activity without specific progress)
+- `2`: Normal progress 
+- `3`: Error state
+- `4`: Paused state
+
+#### percentage
+
+Type: `number`\
+Range: `0` to `100`
+
+Progress percentage. Optional for some states like indeterminate (`1`).
+
+### progressState(state, percentage?)
+
+Convenience function that calls `ConEmu.progressState()`. 
+
+Enables progress reporting in Windows Terminal and ConEmu taskbars using the OSC 9;4 escape sequence.
 
 ### iTerm.annotation(message, options?)
 

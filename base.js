@@ -166,6 +166,25 @@ export const iTerm = {
 
 export const ConEmu = {
 	setCwd: (cwd = cwdFunction()) => `${OSC}9;9;${cwd}${BEL}`,
+	progressState: (state, percentage) => {
+		if (typeof state !== 'number' || state < 0 || state > 4) {
+			throw new TypeError('The `state` argument must be a number between 0 and 4');
+		}
+
+		let returnValue = `${OSC}9;4;${state}`;
+
+		if (percentage !== undefined) {
+			if (typeof percentage !== 'number' || percentage < 0 || percentage > 100) {
+				throw new TypeError('The `percentage` argument must be a number between 0 and 100');
+			}
+
+			returnValue += `;${percentage}`;
+		}
+
+		return returnValue + BEL;
+	},
 };
 
 export const setCwd = (cwd = cwdFunction()) => iTerm.setCwd(cwd) + ConEmu.setCwd(cwd);
+
+export const progressState = (state, percentage) => ConEmu.progressState(state, percentage);

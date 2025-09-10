@@ -282,6 +282,16 @@ export const ConEmu: {
 	@param cwd - Current directory. Default: `process.cwd()`.
 	*/
 	setCwd(cwd?: string): string
+
+	/**
+	Set progress state for Windows Terminal and ConEmu taskbar progress reporting.
+
+	Uses OSC 9;4 escape sequence to update taskbar progress indication.
+
+	@param state - Progress state: 0 (no progress), 1 (indeterminate), 2 (normal), 3 (error), 4 (paused)
+	@param percentage - Progress percentage (0-100). Optional for some states.
+	*/
+	progressState(state: number, percentage?: number): string
 };
 
 /**
@@ -290,3 +300,13 @@ Set the current working directory for both iTerm2 and ConEmu.
 @param cwd - Current directory. Default: `process.cwd()`.
 */
 export function setCwd(cwd?: string): string;
+
+/**
+Set progress state for Windows Terminal and ConEmu taskbar progress reporting.
+
+Uses OSC 9;4 escape sequence to update taskbar progress indication.
+
+@param state - Progress state: 0 (no progress), 1 (indeterminate), 2 (normal), 3 (error), 4 (paused)
+@param percentage - Progress percentage (0-100). Optional for some states.
+*/
+export function progressState(state: number, percentage?: number): string;
