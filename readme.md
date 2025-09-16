@@ -207,7 +207,7 @@ Default: `true`
 Type: `string`\
 Default: `process.cwd()`
 
-Set the current working directory for both iTerm2 and ConEmu.
+Set the current working directory for iTerm2, ConEmu, and Windows Terminal.
 
 ### iTerm.setCwd(path?)
 
@@ -221,7 +221,7 @@ Default: `process.cwd()`
 Type: `string`\
 Default: `process.cwd()`
 
-[Inform ConEmu](https://conemu.github.io/en/AnsiEscapeCodes.html#ConEmu_specific_OSC) about shell current working directory.
+[Inform ConEmu and Windows Terminal](https://conemu.github.io/en/AnsiEscapeCodes.html#ConEmu_specific_OSC) about shell current working directory.
 
 ### iTerm.annotation(message, options?)
 
