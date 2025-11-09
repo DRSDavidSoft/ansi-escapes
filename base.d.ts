@@ -277,7 +277,7 @@ export const iTerm: {
 
 export const ConEmu: {
 	/**
-	[Inform ConEmu](https://conemu.github.io/en/AnsiEscapeCodes.html#ConEmu_specific_OSC) about shell current working directory.
+	[Inform ConEmu and Windows Terminal](https://conemu.github.io/en/AnsiEscapeCodes.html#ConEmu_specific_OSC) about shell current working directory.
 
 	@param cwd - Current directory. Default: `process.cwd()`.
 	*/
@@ -285,7 +285,7 @@ export const ConEmu: {
 };
 
 /**
-Set the current working directory for both iTerm2 and ConEmu.
+Set the current working directory for iTerm2, ConEmu, and Windows Terminal.
 
 @param cwd - Current directory. Default: `process.cwd()`.
 */
